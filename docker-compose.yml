@@ -1,0 +1,26 @@
+# 轻量容器：轮询执行同步（每 5 分钟），符合家庭运维规范
+# 可选：若偏好 inotify 触发，用宿主机 systemd 跑 watch_and_sync.sh
+services:
+  bookmark-sync:
+    image: python:3.11-slim
+    container_name: bookmark-sync
+    restart: unless-stopped
+    user: "1000:1000"
+    working_dir: /app
+    environment:
+      - BOOKMARK_INTEGRATED_DIR=/data/bookmarkIntegrated
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /opt/stacks/bookmark-sync/sync.py:/app/sync.py
+      - /data/webdav/bookmark/bookmarkIntegrated:/data/bookmarkIntegrated
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - "while true; do python3 /app/sync.py; sleep 300; done"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

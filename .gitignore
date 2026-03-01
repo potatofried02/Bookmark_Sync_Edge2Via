@@ -1,0 +1,26 @@
+# 内部/归档与注释用，不对外
+ARCHIVED/
+docs/
+ARCHIVED.md
+USAGE.txt
+deploy/STOP-TRIGGER.md
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# 环境与日志
+.env
+.env.*
+logs/
+*.log
+
+# 系统与编辑
+.DS_Store
+*.swp
+*.swo
+*~

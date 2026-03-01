@@ -1,0 +1,17 @@
+[Unit]
+Description=Bookmark Sync (Edge/Via) - trigger on file change
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=orangepi
+Group=orangepi
+WorkingDirectory=/opt/stacks/bookmark-sync
+Environment=BOOKMARK_INTEGRATED_DIR=/data/webdav/bookmark/bookmarkIntegrated
+ExecStart=/opt/stacks/bookmark-sync/watch_and_sync.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

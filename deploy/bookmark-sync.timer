@@ -1,0 +1,12 @@
+[Unit]
+Description=Bookmark Sync timer (poll every 5 min)
+After=network-online.target
+
+[Timer]
+Unit=bookmark-sync-oneshot.service
+OnBootSec=1min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Bookmark Sync single run (for timer)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=orangepi
+Group=orangepi
+WorkingDirectory=/opt/stacks/bookmark-sync
+Environment=BOOKMARK_INTEGRATED_DIR=/data/webdav/bookmark/bookmarkIntegrated
+ExecStart=/opt/stacks/bookmark-sync/.venv/bin/python /opt/stacks/bookmark-sync/sync.py
