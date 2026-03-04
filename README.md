@@ -27,3 +27,7 @@
 - `BOOKMARK_INTEGRATED_DIR`：放 `edge.html`、`Via/bookmarks.html` 和 `state.json` 的目录
 - `BOOKMARK_EDGE_PATH`：Edge 书签文件完整路径
 - `BOOKMARK_VIA_PATH`：Via 书签文件完整路径
+
+## 更新
+
+- **20260304**：合并逻辑增加 Via 上传不全保护（Via 条数相对上次骤降超过 20% 时不当作删除，避免误删）；写回前重读 Via 采纳滞后删除；watch 脚本定时兜底与 PIPESTATUS 修正。

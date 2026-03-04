@@ -4,6 +4,7 @@ docs/
 ARCHIVED.md
 USAGE.txt
 deploy/STOP-TRIGGER.md
+analyze_via_diff.py
 
 # Python
 .venv/
